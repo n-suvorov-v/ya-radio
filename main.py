@@ -30,15 +30,15 @@ class element_has_css_class(object):
 
 
 webDriverName = 'Safari'
+
 acceptableWebDriverNames = ('Chrome', 'Safari', 'Firefox', 'Ie', 'Edge')
-webDriverToUse = getattr(webdriver, webDriverName)
 SoundTitleMap = {}
 SoundSrcMap = {}
 
 
 if len(sys.argv) > 1 and sys.argv[1] in acceptableWebDriverNames:
     webDriverName = sys.argv[1]
-
+webDriverToUse = getattr(webdriver, webDriverName)
 
 def add_sound(id, title):
     if id in SoundTitleMap:
