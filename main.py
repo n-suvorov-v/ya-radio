@@ -91,13 +91,13 @@ def load_from_radio(url, dirName, count):
             time.sleep(1)
             files = driver.execute_script(
                 "return window.performance.getEntries().filter(element=> element.name.includes('storage.yandex.net/get-mp3')).map(e => e.name)")
-            print len(files)
+            print(len(files))
             fileIds = []
             for src in files:
                 srcId = get_id_from_src(src)
                 fileIds.append(srcId)
                 add_src(srcId, src, dirName)
-            print fileIds
+            print (fileIds)
             if n % 10 == 0:
                 driver.execute_script("performance.clearResourceTimings()")
             driver.execute_script("externalAPI.next()")
