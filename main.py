@@ -29,8 +29,15 @@ class element_has_css_class(object):
         return False
 
 
+webDriverName = 'Safari'
+acceptableWebDriverNames = ('Chrome', 'Safari', 'Firefox', 'Ie', 'Edge')
+webDriverToUse = getattr(webdriver, webDriverName)
 SoundTitleMap = {}
 SoundSrcMap = {}
+
+
+if len(sys.argv) > 1 and sys.argv[1] in acceptableWebDriverNames:
+    webDriverName = sys.argv[1]
 
 
 def add_sound(id, title):
@@ -66,7 +73,7 @@ def get_id_from_link(link):
 
 
 def load_from_radio(url, dirName, count):
-    driver = webdriver.Safari()
+    driver = webDriverToUse()
     driver.get(url)
     try:
         wait = WebDriverWait(driver, 10)
